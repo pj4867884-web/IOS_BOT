@@ -44,7 +44,6 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.message.reply_text(
         f"✅ You selected: {query.data.upper()}"
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
     query = update.callback_query
     await query.answer()
 
