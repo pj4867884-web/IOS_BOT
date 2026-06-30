@@ -1,48 +1,3 @@
-from telegram import (
-    Update,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-)
-from telegram.ext import ContextTypes
-
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    text = update.message.text
-
-    if text == "🎮 Games":
-
-        keyboard = [
-            [
-                InlineKeyboardButton("👑 KING iOS", callback_data="king"),
-                InlineKeyboardButton("🔥 WINIOS BGMI", callback_data="winios"),
-            ],
-            [
-                InlineKeyboardButton("🚀 IOS ZOON", callback_data="zoon"),
-                InlineKeyboardButton("🐬 DOLPHIN IOS", callback_data="dolphin"),
-            ],
-            [
-                InlineKeyboardButton("⚡ NEXT IOS", callback_data="next"),
-                InlineKeyboardButton("💎 VNHAX PRO", callback_data="vnhax"),
-            ],
-            [
-                InlineKeyboardButton("🔥 MARS LOADER", callback_data="mars"),
-                InlineKeyboardButton("🎯 DEADEYE", callback_data="deadeye"),
-            ],
-            [
-                InlineKeyboardButton("⬅️ Back", callback_data="back"),
-            ],
-        ]
-
-        await update.message.reply_text(
-            "🎮 Select a Game",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-        )
-
-async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-
-    await query.message.reply_text(
-        f"✅ You selected: {query.data.upper()}"
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -51,13 +6,10 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Select Game
     if data.startswith("game:"):
-
         game = data.split(":")[1]
-
         keyboard = []
 
         for plan, price in GAMES[game].items():
-
             keyboard.append(
                 [
                     InlineKeyboardButton(
@@ -69,10 +21,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         keyboard.append(
             [
-                InlineKeyboardButton(
-                    "⬅️ Back",
-                    callback_data="back_games"
-                )
+                InlineKeyboardButton("⬅️ Back", callback_data="back_games")
             ]
         )
 
@@ -83,7 +32,6 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Buy Screen
     elif data.startswith("buy:"):
-
         _, game, plan, price = data.split(":")
 
         await context.bot.send_photo(
@@ -91,23 +39,14 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             photo=open(QR_IMAGE, "rb"),
             caption=f"""
 💳 PAYMENT
-
 🎮 Game : {game}
-
 📅 Plan : {plan}
-
 💰 Price : ₹{price}
-
 ━━━━━━━━━━━━━━━
-
 💳 UPI
-
 {UPI_ID}
-
 ━━━━━━━━━━━━━━━
-
 ✅ Complete Payment
-
 📷 Then Send Payment Screenshot Here.
 """
         )
