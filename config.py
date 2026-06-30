@@ -7,3 +7,6 @@ SUPPORT = "@IOS_HACK_S"
 CHANNEL = "@IOS_SHUBHAMCHANNEL"
 
 UPI_NAME = "IOS SHUBHAM"
+UPI_ID = gajanankharbikar@ybl
+
+QR_IMAGE = 
