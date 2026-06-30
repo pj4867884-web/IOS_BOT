@@ -43,52 +43,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await query.message.reply_text(
         f"✅ You selected: {query.data.upper()}"
-    )from telegram import (
-    Update,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-)
-from telegram.ext import ContextTypes
-
-from database.games import GAMES
-from config import UPI_ID, QR_IMAGE
-
-
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    if update.message.text == "🎮 Games":
-
-        keyboard = []
-
-        games = list(GAMES.keys())
-
-        for i in range(0, len(games), 2):
-
-            row = []
-
-            row.append(
-                InlineKeyboardButton(
-                    games[i],
-                    callback_data=f"game:{games[i]}"
-                )
-            )
-
-            if i + 1 < len(games):
-
-                row.append(
-                    InlineKeyboardButton(
-                        games[i + 1],
-                        callback_data=f"game:{games[i+1]}"
-                    )
-                )
-
-            keyboard.append(row)
-
-        await update.message.reply_text(
-            "🎮 Select Your Game",
-            reply_markup=InlineKeyboardMarkup(keyboard)
-        )
-
+  
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
