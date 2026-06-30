@@ -1,0 +1,22 @@
+from telegram import Update
+from telegram.ext import ContextTypes
+
+from keyboards.menu import MAIN_MENU
+
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = """
+🌟 Welcome to IOS SHUBHAM SHOP 🌟
+
+🎮 Premium Game Keys
+🛒 Buy Your Favorite Keys
+⚡ Fast Support
+🔐 Secure Payment
+
+👇 Please select an option below.
+"""
+
+    await update.message.reply_text(
+        text,
+        reply_markup=MAIN_MENU
+    )
