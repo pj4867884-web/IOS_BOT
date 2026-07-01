@@ -979,7 +979,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.edit_text("❌ Clear stock cancelled.")
 
     elif 
-        data.startswith("clearstock_plan_"):if not is_admin(uid):
+    data.startswith("clearstock_plan_"):if not is_admin(uid):
             await query.answer("⛔ Unauthorized", show_alert=True)
             return
         plan_id = data[len("clearstock_plan_") :]
