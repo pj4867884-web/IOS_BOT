@@ -1,1 +1,6 @@
-ttyyy
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "deploy": {
+    "startCommand": "python bot.py"
+  }
+}
