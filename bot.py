@@ -947,7 +947,6 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"🔑 Key <code>{key}</code> sent to user <code>{order['user_id']}</code>.",
             parse_mode="HTML",
         )
-
     elif data.startswith("reject_"):
         if not is_admin(uid):
             await query.answer("⛔ Unauthorized", show_alert=True)
