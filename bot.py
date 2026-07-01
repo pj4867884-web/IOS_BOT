@@ -978,7 +978,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
         await query.message.edit_text("❌ Clear stock cancelled.")
 
-    elif data.startswith("clearstock_plan_"):if not is_admin(uid):
+    elif 
+        data.startswith("clearstock_plan_"):if not is_admin(uid):
             await query.answer("⛔ Unauthorized", show_alert=True)
             return
         plan_id = data[len("clearstock_plan_") :]
@@ -1082,5 +1083,5 @@ def main():
     app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
-if name == "__main__":
+if name == "main":
     main()
